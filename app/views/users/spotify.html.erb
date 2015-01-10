@@ -1,8 +1,18 @@
-<h3>Welcome <%= @spotify_user.display_name %>!</h3>
+<%= image_tag @spotify_user.images.first['url'], :width => 50, :height => 50 %>
+
+<div class="container">
+<table class="table">
+
+<h2>Spotify Playlists</h2>
 
 <% @playlists.each do |playlist| %>
 
-<ul><li><%= playlist.name %></ul>
+<tr><h4><%= playlist.name %></h4></tr>
+		<% playlist.tracks.each do |track| %>
+		<tr><%= link_to track.name + " - ", track.preview_url, :target => "_blank" %> </tr>
+		<% end %>
 
 <% end %>
 
+</table>
+</div>
